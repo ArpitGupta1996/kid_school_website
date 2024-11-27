@@ -8,3 +8,11 @@
 
 <!-- Template Javascript -->
 <script src="{{ asset('js/main.js') }}"></script>
+
+
+
+<script>
+    document.querySelector('form').addEventListener('submit', function() {
+        alert('Your message has been submitted successfully!');
+    });
+</script>

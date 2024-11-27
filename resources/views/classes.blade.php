@@ -292,39 +292,47 @@
                         <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                             <div class="h-100 d-flex flex-column justify-content-center p-5">
                                 <h1 class="mb-4">Make Appointment</h1>
-                                <form>
+                                @if (session()->has('message'))
+                                    <div class="alert alert-success">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                @endif
+                                <form method="POST" action="{{ route('saveappointemnt') }}"
+                                    enctype="multipart/form-data">
+                                    @csrf
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control border-0" id="gname"
-                                                    placeholder="Gurdian Name">
+                                                    name="guardian_name" placeholder="Gurdian Name" required>
                                                 <label for="gname">Gurdian Name</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
                                                 <input type="email" class="form-control border-0" id="gmail"
-                                                    placeholder="Gurdian Email">
+                                                    name="guardian_email" placeholder="Gurdian Email" required>
                                                 <label for="gmail">Gurdian Email</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control border-0" id="cname"
-                                                    placeholder="Child Name">
+                                                    name="child_name" placeholder="Child Name" required>
                                                 <label for="cname">Child Name</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control border-0" id="cage"
-                                                    placeholder="Child Age">
+                                                    name="child_age" placeholder="Child Age" required>
                                                 <label for="cage">Child Age</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating">
-                                                <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                                <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 100px"
+                                                    name="message" required></textarea>
                                                 <label for="message">Message</label>
                                             </div>
                                         </div>
