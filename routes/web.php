@@ -30,3 +30,13 @@ Route::get('appointment',[HomeController::class,'appointment'])->name('appointme
 Route::get('testimonial',[HomeController::class,'testimonial'])->name('testimonial');
 Route::get('contact-us',[HomeController::class,'contact'])->name('contact-us');
 Route::post('save-contact',[HomeController::class,'contactsave'])->name('contactsave');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

@@ -36,6 +36,7 @@
         </div>
         <a href="{{ route('contact-us') }}" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Join Us<i
                 class="fa fa-arrow-right ms-3"></i></a>
+
     </div>
 </nav>
 <!-- Navbar End -->

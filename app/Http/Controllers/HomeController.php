@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
 use App\Models\appointment;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -59,6 +61,20 @@ class HomeController extends Controller
             'subject' => $request->subject,
             'message' => $request->message
         ]);
+
+        // return $data;
+
+        // echo "<pre>"; print_r($data);die;
+
+        // if (!$data) {
+        //     \Log::error('Contact creation failed:', ['request' => $request->all()]);
+        // }
+
+        // // Debug output
+        // dd($data);
+
+        Mail::to('arpitgupta19aug1996@gmail.com')->send(new ContactMail($data));
+
 
         return redirect()->back()->with('success', 'Your Details send to admin !!');
     }
